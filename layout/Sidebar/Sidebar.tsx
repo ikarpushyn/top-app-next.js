@@ -3,10 +3,13 @@ import styles from './Sidebar.module.css';
 import cn from 'classnames';
 import { LayoutProps } from './Sidebar.props';
 import { Menu } from '../Menu/Menu';
+import Logo from '../logo.svg';
 
-export const Sidebar = ({ ...props }: LayoutProps): JSX.Element => {
+export const Sidebar = ({ className, ...props }: LayoutProps): JSX.Element => {
 	return (
-		<div {...props}>
+		<div className={cn(className, styles.sidebar)} {...props}>
+			<Logo className={styles.logo} />
+			<div>Poisk</div>
 			<Menu />
 		</div>
 	);
