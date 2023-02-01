@@ -1,10 +1,13 @@
-import { Htag } from '../../components';
+import { Advantages, Htag } from '../../components';
 import { TopPageComponentProps } from './TopPageComponent.props';
 import { Tag } from './../../components/Tag/Tag';
 import styles from './TopPageComponent.module.css';
 import { Card } from './../../components/Card/Card';
 import { HhData } from './../../components/HhData/HhData';
 import { TopLevelCategory } from '../../interfaces/page.interface';
+import { Sort } from './../../components/Sort/Sort';
+import { Rating } from './../../components/Rating/Rating';
+import { SortEnum } from '../../components/Sort/Sort.props';
 
 export const TopPageComponent = ({
 	page,
@@ -20,7 +23,12 @@ export const TopPageComponent = ({
 						{products.length}
 					</Tag>
 				)}
-				<span>sortirovka</span>
+				<Sort
+					sort={SortEnum.Rating}
+					setSort={function (sort: SortEnum): void {
+						throw new Error('Function not implemented.');
+					}}
+				/>
 			</div>
 
 			<div>{products && products.map((p) => <div key={p._id}>{p.title}</div>)}</div>
@@ -34,7 +42,22 @@ export const TopPageComponent = ({
 				)}
 			</div>
 
-			{firstCategory == TopLevelCategory.Courses && <HhData {...page.hh} />}
+			{firstCategory == TopLevelCategory.Courses && page.hh && <HhData {...page.hh} />}
+			{page.advantages && page.advantages.length > 0 && (
+				<>
+					<Htag tag={'h2'}> Преимущества </Htag>
+					<Advantages advantages={page.advantages} />
+				</>
+			)}
+			{page.seoText && (
+				<div className={styles.seo} dangerouslySetInnerHTML={{ __html: page.seoText }} />
+			)}
+			<Htag tag={'h2'}> Получаемые навыки </Htag>
+			{page.tags.map((t) => (
+				<Tag key={t} color="primary">
+					{t}
+				</Tag>
+			))}
 		</div>
 	);
 };
