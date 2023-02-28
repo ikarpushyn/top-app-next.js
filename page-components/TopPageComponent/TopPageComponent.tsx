@@ -21,7 +21,6 @@ export const TopPageComponent = ({
 		products,
 		sort: SortEnum.Rating,
 	});
-	console.log('sort:', sort);
 
 	const setSort = (sort: SortEnum) => {
 		dispatchSort({ type: sort });

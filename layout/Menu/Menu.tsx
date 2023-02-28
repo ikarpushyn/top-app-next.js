@@ -80,8 +80,7 @@ export const Menu = (): JSX.Element => {
 
 	const buildThirdLevel = (pages: PageItem[], route: string) => {
 		return pages.map((p) => (
-			// eslint-disable-next-line react/jsx-key
-			<Link href={`/${route}/${p.alias}`} legacyBehavior>
+			<Link key={p._id} href={`/${route}/${p.alias}`} legacyBehavior>
 				<a
 					className={cn(styles.thirdLevel, {
 						[styles.thirdLevelActive]: `/${route}/${p.alias}` == router.asPath,
