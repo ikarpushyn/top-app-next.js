@@ -2,13 +2,11 @@ import { Advantages, Htag } from '../../components';
 import { TopPageComponentProps } from './TopPageComponent.props';
 import { Tag } from './../../components/Tag/Tag';
 import styles from './TopPageComponent.module.css';
-import { Card } from './../../components/Card/Card';
 import { HhData } from './../../components/HhData/HhData';
 import { TopLevelCategory } from '../../interfaces/page.interface';
 import { Sort } from './../../components/Sort/Sort';
-import { Rating } from './../../components/Rating/Rating';
 import { SortEnum } from '../../components/Sort/Sort.props';
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { sortReducer } from './sort.reducer';
 import { Product } from './../../components/Product/Product';
 
@@ -25,6 +23,10 @@ export const TopPageComponent = ({
 	const setSort = (sort: SortEnum) => {
 		dispatchSort({ type: sort });
 	};
+
+	useEffect(() => {
+		dispatchSort({ type: 'reset', initialState: products });
+	}, [products]);
 
 	return (
 		<div className={styles.wrapper}>

@@ -1,47 +1,37 @@
 import { GetStaticProps } from 'next';
-import { useState } from 'react';
-import { Button, Htag, Input, P, Rating } from '../components';
+import React, { useState } from 'react';
+import { Button, Htag, Input, P, Rating, Tag, Textarea } from '../components';
 import { withLayout } from '../layout/Layout';
-import { Tag } from './../components/Tag/Tag';
 import axios from 'axios';
 import { MenuItem } from '../interfaces/menu.interface';
-import { Textarea } from './../components/Textarea/Textarea';
+import { API } from '../helpers/api';
 
 function Home({ menu }: HomeProps): JSX.Element {
 	const [rating, setRating] = useState<number>(4);
 
 	return (
 		<>
-			<Htag tag="h1">Text</Htag>
-			<Htag tag="h1">{1}</Htag>
+			<Htag tag="h1">Заголовок</Htag>
 			<Button appearance="primary" arrow="right">
-				KNOPKA
+				Кнопка
 			</Button>
 			<Button appearance="ghost" arrow="down">
-				KNOPKA
+				Кнопка
 			</Button>
-			<P size="l">big</P>
-			<P size="m">med</P>
-			<P size="s">small</P>
-			<Tag size="m">small</Tag>
+			<P size="l">Большой</P>
+			<P>Средний</P>
+			<P size="s">Маленький</P>
+			<Tag size="s">Ghost</Tag>
 			<Tag size="m" color="red">
-				red
+				Red
 			</Tag>
 			<Tag size="s" color="green">
-				green
+				Green
 			</Tag>
-			<Tag size="s" color="primary">
-				green
-			</Tag>
-			<Tag href="google.com" size="s" color="primary">
-				href
-			</Tag>
-
+			<Tag color="primary">Green</Tag>
 			<Rating rating={rating} isEditable setRating={setRating} />
-
-			<Input placeholder="Имя" />
-			<Input placeholder="Фамилия" />
-			<Textarea placeholder="Текст Отзыва" />
+			<Input placeholder="тест" />
+			<Textarea placeholder="тест area" />
 		</>
 	);
 }
@@ -50,12 +40,9 @@ export default withLayout(Home);
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 	const firstCategory = 0;
-	const { data: menu } = await axios.post<MenuItem[]>(
-		process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
-		{
-			firstCategory,
-		}
-	);
+	const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+		firstCategory,
+	});
 	return {
 		props: {
 			menu,
