@@ -4,7 +4,6 @@
 
 	display: grid;
 	grid-template-columns: [start] auto 1fr auto [end];
-
 	gap: 20px 30px;
 	align-items: center;
 }
@@ -51,13 +50,16 @@
 	.reviewForm {
 		grid-template-columns: [start] 1fr 1fr [end];
 	}
+
 	.title {
 		justify-self: normal;
 	}
+
 	.rating {
 		grid-column: start / end;
 	}
 }
+
 @media screen and (max-width: 640px) {
 	.reviewForm {
 		grid-template-columns: [start] 1fr [end];
