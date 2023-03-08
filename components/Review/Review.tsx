@@ -18,11 +18,9 @@ export const Review = ({ review, className, ...props }: ReviewProps): JSX.Elemen
 			<div className={styles.date}>
 				{format(new Date(createdAt), 'dd MMMM yyyy', { locale: ru })}
 			</div>
-
 			<div className={styles.rating}>
 				<Rating rating={rating} />
 			</div>
-
 			<div className={styles.description}>{description}</div>
 		</div>
 	);
