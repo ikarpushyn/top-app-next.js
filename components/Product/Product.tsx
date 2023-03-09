@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { ProductProps } from './Product.props';
 import styles from './Product.module.css';
 import cn from 'classnames';
@@ -14,7 +15,6 @@ import { ReviewForm } from '../ReviewForm/ReviewForm';
 import { motion } from 'framer-motion';
 
 export const Product = motion(
-	// eslint-disable-next-line react/display-name
 	forwardRef(
 		(
 			{ product, className, ...props }: ProductProps,
