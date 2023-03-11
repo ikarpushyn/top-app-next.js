@@ -1,4 +1,3 @@
-import cn from 'classnames';
 import styles from './HhData.module.css';
 import { Card } from './../Card/Card';
 import React from 'react';

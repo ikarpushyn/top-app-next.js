@@ -294,4 +294,9 @@
 			'hr2'
 			'actions';
 	}
+
+	.reviewButton {
+		margin: auto;
+		margin-top: 10px;
+	}
 }
