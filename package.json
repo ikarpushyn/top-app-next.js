@@ -7,7 +7,7 @@
 		"dev": "next dev",
 		"export": "next export",
 		"debug": "NODE_OPTIONS='--inspect' next dev",
-		"build": "next build",
+		"build": "next build --timeout=300000",
 		"start": "next start",
 		"stylelint": "stylelint \"**/*.css\" --fix"
 	},
