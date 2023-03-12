@@ -12,6 +12,9 @@ module.exports = {
 		config.module.rules.push({
 			loader: '@svgr/webpack',
 			issuer: /\.[jt]sx?$/,
+			images: {
+				unoptimized: true,
+			},
 			options: {
 				prettier: false,
 				svgo: true,
