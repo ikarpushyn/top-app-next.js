@@ -24,7 +24,7 @@ export const Product = motion(
 			const reviewRef = useRef<HTMLDivElement>(null);
 
 			const variants = {
-				visible: { opacity: 1, height: 'auto' },
+				visible: { opacity: 1, height: 'auto', display: 'block' },
 				hidden: { opacity: 0, height: 0, display: 'none' },
 			};
 
