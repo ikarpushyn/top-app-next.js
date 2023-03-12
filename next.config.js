@@ -6,15 +6,13 @@ const nextConfig = {
 
 module.exports = {
 	images: {
+		unoptimized: true,
 		domains: ['courses-top.ru'],
 	},
 	webpack(config, options) {
 		config.module.rules.push({
 			loader: '@svgr/webpack',
 			issuer: /\.[jt]sx?$/,
-			images: {
-				unoptimized: true,
-			},
 			options: {
 				prettier: false,
 				svgo: true,
